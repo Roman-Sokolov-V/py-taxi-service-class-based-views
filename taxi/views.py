@@ -26,13 +26,13 @@ class ManufacturerListView(generic.ListView):
 
 class CarListView(generic.ListView):
     model = Car
-    queryset = Car.objects.all().select_related("manufacturer").all()
+    queryset = Car.objects.all().select_related("manufacturer")
     paginate_by = 5
 
 
 class CarDetailView(generic.DetailView):
     model = Car
-    queryset = Car.objects.prefetch_related("drivers").all()
+    queryset = Car.objects.prefetch_related("drivers")
 
 
 class DriverListView(generic.ListView):
@@ -42,4 +42,4 @@ class DriverListView(generic.ListView):
 
 class DriverDetailView(generic.DetailView):
     model = Driver
-    queryset = Driver.objects.prefetch_related("cars").all()
+    queryset = Driver.objects.prefetch_related("cars")
